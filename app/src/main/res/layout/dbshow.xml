@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etName"
+        android:layout_marginTop="29dp"
+        android:selectAllOnFocus="true"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView6"
+        android:layout_toRightOf="@+id/textView6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/etMoney"
+        android:selectAllOnFocus="true"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/etName"
+        android:layout_alignStart="@+id/etName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/date_today"
+        android:id="@+id/textView2"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/textView5"
+        android:layout_toLeftOf="@+id/etPrim"
+        android:layout_toStartOf="@+id/etPrim" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tvAfter"
+        android:text="123"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_toRightOf="@+id/etPrim"
+        android:layout_toEndOf="@+id/etPrim" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/date_otdachi"
+        android:id="@+id/textView5"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tvAfter"
+        android:text="123"
+        android:linksClickable="false"
+        android:clickable="true"
+        android:layout_below="@+id/rgCurrancy"
+        android:layout_alignLeft="@+id/tvAfter"
+        android:layout_alignStart="@+id/tvAfter" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        android:id="@+id/btnEdit"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/contact"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/etName"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/dolg"
+        android:id="@+id/textView6"
+        android:layout_marginBottom="62dp"
+        android:layout_above="@+id/textView5"
+        android:layout_alignLeft="@+id/rgCurrancy"
+        android:layout_alignStart="@+id/rgCurrancy" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etPrim"
+        android:layout_marginTop="79dp"
+        android:text="@string/prim"
+        android:focusable="true"
+        android:selectAllOnFocus="true"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/etName"
+        android:layout_alignRight="@+id/etName"
+        android:layout_alignEnd="@+id/etName"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_above="@+id/etMoney"
+        android:id="@+id/rgOwe">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Me"
+            android:id="@+id/rbToMe"
+            android:layout_weight="0.56"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ToMe"
+            android:id="@+id/rbMe"
+            android:layout_weight="0.24"
+            android:checked="true" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/etMoney"
+        android:layout_above="@+id/textView5"
+        android:id="@+id/rgCurrancy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:text="@string/BYR"
+            android:id="@+id/rbBYR"
+            android:checked="true" />
+
+        <RadioButton
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/USD"
+            android:id="@+id/rbUSD"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EUR"
+            android:id="@+id/rbEUR"
+            android:checked="false" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:id="@+id/btnDelete"
+        android:layout_alignTop="@+id/btnEdit"
+        android:layout_alignLeft="@+id/tvAfter"
+        android:layout_alignStart="@+id/tvAfter" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show"
+        android:id="@+id/btnShow"
+        android:layout_alignBottom="@+id/btnEdit"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Debetors</string>
+    <string name="pass">Enter the Password</string>
+    <string name="login">Login</string>
+    <string name="text_tab1"/>
+    <string name="text_tab2"/>
+    <string name="Button_active">Добавить Дебеторов</string>
+    <string name="text_tab_header">Мои активы</string>
+    <string name="pwdchg">Введите новый пароль</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="dolg">Сколько должен: </string>
+    <string name="date"> 01/01/1997 </string>
+    <string name="date_today">Когда взят: </string>
+    <string name="date_otdachi">Когда отдать: </string>
+    <string name="Add">Добавить</string>
+    <string name="contact">Имя контакта: </string>
+    <string name="prim">Примечания: </string>
+    <string name="Me">Я должен</string>
+    <string name="ToMe">Мне должны</string>
+    <string name="BYR">BYR</string>
+    <string name="USD">USD</string>
+    <string name="EUR">EUR</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
+    <string name="show">Показать</string>
+    <string name="add_contact">add_menu</string>
+</resources>
