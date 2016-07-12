@@ -62,7 +62,7 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
 
         Cursor contacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null,null, null);
 
-        if (contacts.getCount() < 0)
+        if (contacts.getCount() > 0)
         {
             final String products[] = new String[contacts.getCount()];
 
