@@ -39,6 +39,7 @@ public class Pwd_change extends AppCompatActivity implements View.OnClickListene
         {
             case R.id.btnOK:
                 savePwd();
+                finish();
                 break;
 
             case R.id.btnCancel:

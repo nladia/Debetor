@@ -63,11 +63,6 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "Вы очищенны", Toast.LENGTH_SHORT).show();
                 PlagRenew();
                 break;
-            case 2:
-                Intent intentShow;
-                intentShow = new Intent(this, dbShow.class);
-                startActivity(intentShow);
-                break;
             case R.id.itmEdit:
                 Intent intent1;
                 intent1 = new Intent(this, Add_contact.class);
