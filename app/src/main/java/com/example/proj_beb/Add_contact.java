@@ -192,8 +192,11 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
         if (contacts.moveToFirst()) {
 
             do {
-                    if (contacts.getString(nameColIndex).length() > 0)
+                    if (contacts.getString(nameColIndex) != null){
                         prod[i++] = contacts.getString(nameColIndex);
+
+                    }
+
                 
             } while (contacts.moveToNext());
         }
