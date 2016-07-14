@@ -65,16 +65,10 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
 
         if (contacts.getCount() > 0)
         {
-            
             String products[] = new String[contacts.getCount()];
-
-
-
             int i = StrChg(products, contacts);
-
             for (; i<contacts.getCount(); i++)
                 products[i] = "";
-
             adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, products);
         } else
         {
@@ -82,8 +76,6 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
             products[0] = "";
             adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, products);
         }
-
-
 
         lv.setAdapter(adapter);
 
