@@ -62,15 +62,23 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
 
         Cursor contacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null,null, null);
 
+
         if (contacts.getCount() > 0)
         {
-            final String products[] = new String[contacts.getCount()];
+            
+            String products[] = new String[contacts.getCount()];
 
-            StrChg(products, contacts);
+
+
+            int i = StrChg(products, contacts);
+
+            for (; i<contacts.getCount(); i++)
+                products[i] = "";
+
             adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, products);
         } else
         {
-            final String products[] = new String[1];
+            String products[] = new String[1];
             products[0] = "";
             adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, products);
         }
@@ -178,6 +186,7 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
         sqldb = new SQLdb(this);
     }
 
+
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -185,18 +194,18 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    public String[] StrChg(String prod[], Cursor contacts) {
+    public int StrChg(String prod[], Cursor contacts) {
         int nameColIndex = contacts.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
-
+        int i = 0;
         if (contacts.moveToFirst()) {
-            int i = 0;
-            do {
-                if(contacts.getString(nameColIndex).length() > 0)
-                    prod[i++] = contacts.getString(nameColIndex).toString();
 
+            do {
+                    if (contacts.getString(nameColIndex).length() > 0)
+                        prod[i++] = contacts.getString(nameColIndex);
+                
             } while (contacts.moveToNext());
         }
-        return prod;
+        return i;
     }
 
     @Override
