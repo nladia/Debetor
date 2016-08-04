@@ -275,7 +275,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btnInfo:
             {
-
+                Intent intent_rates_info;
+                intent_rates_info = new Intent(this, Rates_info.class);
+                startActivity(intent_rates_info);
                 break;
             }
         }
