@@ -18,11 +18,12 @@
     <string name="prim">Примечания: </string>
     <string name="Me">Я должен</string>
     <string name="ToMe">Мне должны</string>
-    <string name="BYR">BYR</string>
+    <string name="BYR">BYN</string>
     <string name="USD">USD</string>
     <string name="EUR">EUR</string>
     <string name="edit">Изменить</string>
     <string name="delete">Удалить</string>
     <string name="show">Показать</string>
     <string name="add_contact">add_menu</string>
+    <string name="info">info</string>
 </resources>

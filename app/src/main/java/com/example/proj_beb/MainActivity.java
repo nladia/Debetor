@@ -23,7 +23,7 @@ import android.widget.Toast;
 import java.util.Random;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 
 
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     SQLdb sqldb;
     LinearLayout llMain, llDeb;
     ScrollView scrlMain, scrlDeb;
+    Button btnInfo;
     int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
     int matchParent = LinearLayout.LayoutParams.MATCH_PARENT;
 
@@ -83,6 +84,9 @@ public class MainActivity extends AppCompatActivity
         scrlMain = (ScrollView)findViewById(R.id.scrlMain);
         llDeb = (LinearLayout)findViewById(R.id.llDeb);
         scrlDeb = (ScrollView)findViewById(R.id.scrlDeb);
+        btnInfo = (Button)findViewById(R.id.btnInfo);
+
+        btnInfo.setOnClickListener(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(myToolbar);
@@ -248,7 +252,7 @@ public class MainActivity extends AppCompatActivity
                 }
             } while (c.moveToNext());
         }
-        tvBalance.setText("TotalBYR: "+ totalBYR + "\nTotalUSD: " + totalUSD + "\nTotalEUR: " + totalEUR);
+        tvBalance.setText("TotalBYN: "+ totalBYR + "\nTotalUSD: " + totalUSD + "\nTotalEUR: " + totalEUR);
         sqldb.close();
     }
 
@@ -265,5 +269,19 @@ public class MainActivity extends AppCompatActivity
     {
         super.onResume();
         PlagRenew();
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.btnInfo:
+            {
+
+                break;
+            }
+        }
+
     }
 }
