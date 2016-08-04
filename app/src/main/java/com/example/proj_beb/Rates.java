@@ -37,11 +37,14 @@ public class Rates {
 
     private void procData(String str)
     {
-        str = str.substring(1, str.length() - 2);
-        String tmp[] = str.split(",");
-        Cur_Rates = tmp[5].substring(tmp[5].lastIndexOf(":") + 1, tmp[5].length());
-        Cur_Name = tmp[2].substring(tmp[2].lastIndexOf(":") + 1, tmp[2].length());
-        Cur_Scale = tmp[3].substring(tmp[3].lastIndexOf(":") + 1, tmp[3].length());
+        if (!str.equals("Нет доступа"))
+        {
+            str = str.substring(1, str.length() - 2);
+            String tmp[] = str.split(",");
+            Cur_Rates = tmp[5].substring(tmp[5].lastIndexOf(":") + 1, tmp[5].length());
+            Cur_Name = tmp[2].substring(tmp[2].lastIndexOf(":") + 1, tmp[2].length());
+            Cur_Scale = tmp[3].substring(tmp[3].lastIndexOf(":") + 1, tmp[3].length());
+        }
 
     }
 
@@ -79,8 +82,15 @@ public class Rates {
     public String getRates()
     {
         String str;
-        str = Cur_Scale + " " + Cur_Name + " = " + Cur_Rates + " BYN";
-        return str;
+
+        if (Cur_Scale != null && Cur_Name != null && Cur_Rates != null) {
+            str = Cur_Scale + " " + Cur_Name + " = " + Cur_Rates + " BYN";
+            return str;
+        }
+        else
+        {
+            return "Нет доступа";
+        }
     }
 
 
@@ -129,9 +139,14 @@ public class Rates {
                 }
                 return (buf.toString());
 
+
             } finally {
                 if (reader != null) {
                     reader.close();
+                }
+                else
+                {
+                    return "Нет доступа";
                 }
             }
         }

@@ -38,4 +38,13 @@ android:paddingTop="@dimen/activity_vertical_margin">
     android:layout_marginTop="70dp"
     android:layout_below="@+id/tvEUR"
     android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/btnBack"
+        android:layout_marginBottom="95dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
