@@ -2,21 +2,17 @@ package com.example.proj_beb;/**
  * Created by Влад on 12.07.2016.
  */
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-public class Info extends AppCompatActivity
+public class Contact_Info extends AppCompatActivity
 {
     SQLdb sqldb;
     TextView tvName,tvOwe, tvMoney, tvToday, tvAfter, tvPrim;
@@ -25,7 +21,7 @@ public class Info extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info);
+        setContentView(R.layout.contact_info);
 
         tvName = (TextView)findViewById(R.id.tvName);
         tvMoney = (TextView)findViewById(R.id.tvMoney);
