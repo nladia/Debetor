@@ -30,17 +30,22 @@ public class Rates_info extends AppCompatActivity
             }
         });
 
-        rateRUB = new Rates("rub");
         tvRUB = (TextView) findViewById(R.id.tvRUB);
-        tvRUB.setText(rateRUB.getRates());
-
-        rateUSD = new Rates("usd");
         tvUSD = (TextView) findViewById(R.id.tvUSD);
-        tvUSD.setText(rateUSD.getRates());
-
-        rateEUR = new Rates("EUR");
         tvEUR = (TextView) findViewById(R.id.tvEUR);
+
+        rateRUB = new Rates("rub");
+        rateUSD = new Rates("usd");
+        rateEUR = new Rates("EUR");
+
+        tvRUB.setText(rateRUB.getRates());
+        tvUSD.setText(rateUSD.getRates());
         tvEUR.setText(rateEUR.getRates());
+
+
+
+
+
     }
 }
 

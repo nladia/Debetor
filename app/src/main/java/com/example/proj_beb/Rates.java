@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by Влад on 02.08.2016.
  */
+
 public class Rates {
     String _url;
     MyTask mt;
@@ -22,7 +23,7 @@ public class Rates {
     private static final String RUB = "298";
 
     String Cur_Scale;
-    String Cur_Rates;
+    Double Cur_Rates;
     String Cur_Name;
 
     Rates(String str)
@@ -41,13 +42,17 @@ public class Rates {
         {
             str = str.substring(1, str.length() - 2);
             String tmp[] = str.split(",");
-            Cur_Rates = tmp[5].substring(tmp[5].lastIndexOf(":") + 1, tmp[5].length());
-            Cur_Name = tmp[2].substring(tmp[2].lastIndexOf(":") + 1, tmp[2].length());
+
+            Cur_Rates = Double.parseDouble(tmp[5].substring(tmp[5].lastIndexOf(":") + 1, tmp[5].length()));
+            Cur_Name = tmp[2].substring(tmp[2].lastIndexOf(":") + 2, tmp[2].length() - 1);
             Cur_Scale = tmp[3].substring(tmp[3].lastIndexOf(":") + 1, tmp[3].length());
         }
 
     }
 
+    public java.lang.Double getCur_Rates() {
+        return Cur_Rates;
+    }
 
     private void getData(String url_Cur)
     {

@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void PlagCreate()
     {
         sqldb = new SQLdb(this);
-        float totalEUR = 0, totalBYR = 0, totalUSD = 0;
+        Double totalEUR = 0.0, totalBYR = 0.0, totalUSD = 0.0;
 
         SQLiteDatabase db = sqldb.getWritableDatabase();
         Cursor c = db.query("mytable2", null, null, null, null, null, null);
@@ -195,14 +195,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
 
             // определяем номера столбцов по имени в выборке
-            int id = c.getColumnIndex("id");
             int name = c.getColumnIndex("name");
             int owe = c.getColumnIndex("owe");
             int value = c.getColumnIndex("value");
             int currancy = c.getColumnIndex("currancy");
-            int dateOwe = c.getColumnIndex("dateOwe");
-            int dateBack = c.getColumnIndex("dateBack");
-            int specialBack = c.getColumnIndex("special");
             int plagID=0;
 
 
@@ -249,7 +245,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             } while (c.moveToNext());
         }
-        tvBalance.setText("TotalBYN: "+ totalBYR + "\nTotalUSD: " + totalUSD + "\nTotalEUR: " + totalEUR);
+        Rates rateUSD = new Rates("usd");
+        Rates rateEUR = new Rates("EUR");
+
+        totalBYR += totalUSD * rateUSD.getCur_Rates() + totalEUR * rateEUR.getCur_Rates();
+
+        tvBalance.setText("TotalBYN: "+ totalBYR);
         sqldb.close();
     }
 
