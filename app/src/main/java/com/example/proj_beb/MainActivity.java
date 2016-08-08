@@ -245,12 +245,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             } while (c.moveToNext());
         }
-        Rates rateUSD = new Rates("usd");
-        Rates rateEUR = new Rates("EUR");
 
-        totalBYR += totalUSD * rateUSD.getCur_Rates() + totalEUR * rateEUR.getCur_Rates();
+        tvBalance.setText("TotalBYR: "+ totalBYR + "\nTotalUSD: " + totalUSD + "\nTotalEUR: " + totalEUR);
 
-        tvBalance.setText("TotalBYN: "+ totalBYR);
+
         sqldb.close();
     }
 
