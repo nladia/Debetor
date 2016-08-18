@@ -1,6 +1,7 @@
 package com.example.proj_beb;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scrlDeb = (ScrollView)findViewById(R.id.scrlDeb);
         btnInfo = (Button)findViewById(R.id.btnInfo);
 
+
         btnInfo.setOnClickListener(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -146,6 +148,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout llNew = new LinearLayout(this,null);
         llNew.setOrientation(LinearLayout.VERTICAL);
 
+
+
         final Button btnNew = new Button(this);
         final TextView tvNew = new TextView(this);
         final TextView tvNew2 = new TextView(this);
@@ -175,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         llNew.addView(tvNew, lParams);
         llNew.addView(tvNew2, lParams);
         llNew.addView(btnNew, lParams);
-        llNew.setBackgroundColor(Color.LTGRAY);
+        llNew.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
 
         return llNew;
@@ -246,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } while (c.moveToNext());
         }
 
-        tvBalance.setText("TotalBYR: "+ totalBYR + "\nTotalUSD: " + totalUSD + "\nTotalEUR: " + totalEUR);
+        tvBalance.setText("TotalBYN: "+ totalBYR + "\nTotalUSD: " + totalUSD + "\nTotalEUR: " + totalEUR);
 
 
         sqldb.close();
