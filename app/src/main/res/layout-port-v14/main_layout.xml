@@ -66,11 +66,6 @@
             android:orientation="vertical">
         </LinearLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:src="@drawable/ic_done"
-            app:fabSize="normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
     </ScrollView>
 
@@ -117,5 +112,19 @@
             android:id="@+id/btnInfo"
             android:layout_gravity="right"
             android:text="@string/info" />
+
     </LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:id="@+id/imageButton"
+        android:layout_gravity="right"
+
+        android:contentDescription=""
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignRight="@+id/linearLayout"
+        android:adjustViewBounds="false" />
+
 </RelativeLayout>

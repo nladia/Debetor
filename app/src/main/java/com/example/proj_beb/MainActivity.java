@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabSpec.setContent(R.id.tvTab1);
 
 
+
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("kred");
