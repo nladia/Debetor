@@ -25,8 +25,7 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background_material_light">
+                android:layout_height="wrap_content">
             </TabWidget>
 
             <FrameLayout
@@ -57,7 +56,6 @@
         android:layout_above="@+id/linearLayout"
         android:id="@+id/scrlMain"
         android:layout_below="@+id/app_bar"
-        android:background="@color/colorBackPlag"
         android:layout_marginTop="55dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +74,6 @@
         android:layout_above="@+id/linearLayout"
         android:layout_below="@+id/app_bar"
         android:layout_marginTop="55dp"
-        android:background="@color/colorBackPlag"
         android:fillViewport="false">
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,37 +91,36 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout"
+        android:weightSum="1"
+        android:layout_toStartOf="@+id/IBtnAdd"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:weightSum="1"
-        android:background="@color/background_material_light">
+        android:background="@color/colorPrimary100">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvBalance"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/btnInfo"
-            android:layout_gravity="right"
-            android:text="@string/info" />
+            android:layout_weight="0.80" />
 
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
-        android:id="@+id/imageButton"
-        android:layout_gravity="right"
 
-        android:contentDescription=""
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignRight="@+id/linearLayout"
-        android:adjustViewBounds="false" />
+
+    <ImageButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_add"
+        android:id="@+id/IBtnAdd"
+        android:background="@drawable/oval"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_marginBottom="52dp"
+        android:layout_marginRight="15dp"
+ />
 
 </RelativeLayout>

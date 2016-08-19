@@ -24,6 +24,7 @@
         android:inputType="numberPassword" />
 
     <Button
+        android:background="@color/colorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/OK"
@@ -37,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Cancel"
+        android:background="@color/colorButton"
         android:id="@+id/btnCancel"
         android:layout_alignTop="@+id/btnOK"
         android:layout_alignRight="@+id/textView"

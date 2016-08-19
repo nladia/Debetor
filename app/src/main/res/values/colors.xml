@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimary100">#C5CAE9</color>
+    <color name="colorPrimary500">#3f51b5</color>
+    <color name="colorPrimary700">#303F9F</color>
+
+
+    <color name="colorAccent200">#FF4081</color>
+    <color name="colorAccent400">#F50057</color>
+
+
     <color name="colorBackPlag">#cfd8dc</color>
+    <color name="colorButton">#9e9e9e</color>
 </resources>

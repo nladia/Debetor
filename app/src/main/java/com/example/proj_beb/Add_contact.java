@@ -236,7 +236,7 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
             switch (rgCurrancy.getCheckedRadioButtonId())
             {
                 case R.id.rbBYR:
-                    cv.put("currancy", "BYR");
+                    cv.put("currancy", "BYN");
                     break;
                 case R.id.rbUSD:
                     cv.put("currancy", "USD");

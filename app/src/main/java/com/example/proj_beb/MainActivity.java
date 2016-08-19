@@ -1,7 +1,6 @@
 package com.example.proj_beb;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TabHost;
@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener
+public class MainActivity extends AppCompatActivity
 {
 
 
@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SQLdb sqldb;
     LinearLayout llMain, llDeb;
     ScrollView scrlMain, scrlDeb;
-    Button btnInfo;
     int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
     int matchParent = LinearLayout.LayoutParams.MATCH_PARENT;
+    ImageButton IBtnAdd;
 
 
 
@@ -62,10 +62,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "Вы очищенны", Toast.LENGTH_SHORT).show();
                 PlagRenew();
                 break;
-            case R.id.itmEdit:
-                Intent intent1;
-                intent1 = new Intent(this, Add_contact.class);
-                startActivity(intent1);
+            case R.id.itmRates:
+
+                Intent intent_rates_info;
+                intent_rates_info = new Intent(this, Rates_info.class);
+                startActivity(intent_rates_info);
+
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -76,16 +78,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 
+
+
         tvBalance = (TextView) findViewById(R.id.tvBalance);
         tvBalance.setText("Total:");
         llMain = (LinearLayout)findViewById(R.id.llMain);
         scrlMain = (ScrollView)findViewById(R.id.scrlMain);
         llDeb = (LinearLayout)findViewById(R.id.llDeb);
         scrlDeb = (ScrollView)findViewById(R.id.scrlDeb);
-        btnInfo = (Button)findViewById(R.id.btnInfo);
+        IBtnAdd = (ImageButton)findViewById(R.id.IBtnAdd);
+
+        IBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1;
+                intent1 = new Intent(MainActivity.this, Add_contact.class);
+                startActivity(intent1);
+            }
+        });
 
 
-        btnInfo.setOnClickListener(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(myToolbar);
@@ -100,8 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabSpec = tabHost.newTabSpec("deb");
         tabSpec.setIndicator("Я должен");
         tabSpec.setContent(R.id.tvTab1);
-
-
 
         tabHost.addTab(tabSpec);
 
@@ -156,11 +166,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final TextView tvNew2 = new TextView(this);
 
 
+
         btnNew.setText("Full Info");
         tvNew.setText(name);
         tvNew.setTextSize(25);
         tvNew2.setText(owe + " " + summ + " " + currancy);
         tvNew2.setTextSize(20);
+        tvNew.setTextColor(Color.BLACK);
+        tvNew2.setTextColor(Color.BLACK);
 
         btnNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,10 +190,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lParams.gravity = Gravity.START;
         lParams.setMargins(15,5,5,20);
 
+
         llNew.addView(tvNew, lParams);
         llNew.addView(tvNew2, lParams);
         llNew.addView(btnNew, lParams);
-        llNew.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        llNew.setBackgroundColor(Color.parseColor("#E8EAF6"));
 
 
         return llNew;
@@ -272,19 +286,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PlagRenew();
     }
 
-    @Override
-    public void onClick(View v)
-    {
-        switch (v.getId())
-        {
-            case R.id.btnInfo:
-            {
-                Intent intent_rates_info;
-                intent_rates_info = new Intent(this, Rates_info.class);
-                startActivity(intent_rates_info);
-                break;
-            }
-        }
-
-    }
 }

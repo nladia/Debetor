@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Rates_info" android:screenOrientation="portrait">
+        <activity android:name=".Rates_info" android:screenOrientation="portrait" android:theme="@style/DialogNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

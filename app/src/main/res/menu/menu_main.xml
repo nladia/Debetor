@@ -2,8 +2,8 @@
     xmlns:yourapp="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/itmEdit"
+        android:id="@+id/itmRates"
         android:title="@string/add_contact"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/ic_money"
         yourapp:showAsAction="always" />
 </menu>
