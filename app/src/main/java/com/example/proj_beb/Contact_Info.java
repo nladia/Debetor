@@ -79,7 +79,7 @@ public class Contact_Info extends AppCompatActivity
 
         tvName.setText(c.getString(name));
         tvOwe.setText(c.getString(owe));
-        tvMoney.setText(c.getString(value) + c.getString(currancy));
+        tvMoney.setText(c.getString(value) + " " + c.getString(currancy));
         tvToday.setText(c.getString(dateOwe));
         tvAfter.setText(c.getString(dateBack));
         tvPrim.setText(c.getString(special));

@@ -163,15 +163,33 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
 
         Calendar c = Calendar.getInstance();
         myDay = c.get(Calendar.DAY_OF_MONTH);
-        myMonth = c.get(Calendar.MONTH);
+        myMonth = c.get(Calendar.MONTH) + 1;
         myYear = c.get(Calendar.YEAR);
 
         rgOwe = (RadioGroup) findViewById(R.id.rgOwe);
         rgCurrancy = (RadioGroup) findViewById(R.id.rgCurrancy);
 
 
-        tvAfter.setText(myDay + "/" + myMonth + "/" + myYear);
-        tvToday.setText(myDay + "/" + myMonth + "/" + myYear);
+        String today;
+
+        if (myDay < 10)
+        {
+            today = "0" + myDay;
+        } else {
+            today = "" + myDay;
+        }
+        today += ".";
+
+        if (myMonth < 10)
+        {
+            today += "0" + myMonth;
+        } else {
+            today += myMonth;
+        }
+        today += "." + myYear;
+
+        tvAfter.setText(today);
+        tvToday.setText(today);
 
         tvAfter.setOnClickListener(this);
 
@@ -257,7 +275,7 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
     protected Dialog onCreateDialog(int id) {
         if (id == DIALOG_DATE_AFTER)
         {
-            DatePickerDialog tpd = new DatePickerDialog(this, myCallBack, myYear, myMonth, myDay);
+            DatePickerDialog tpd = new DatePickerDialog(this, myCallBack, myYear, myMonth - 1, myDay);
 
             return tpd;
         }
@@ -280,9 +298,28 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
             myYear = year;
-            myMonth = monthOfYear;
+            myMonth = monthOfYear + 1;
             myDay = dayOfMonth;
-            tvAfter.setText(myDay + "/" + myMonth + "/" + myYear);
+
+            String today;
+
+            if (myDay < 10)
+            {
+                today = "0" + myDay;
+            } else {
+                today = "" + myDay;
+            }
+            today += ".";
+
+            if (myMonth < 10)
+            {
+                today += "0" + myMonth;
+            } else {
+                today += myMonth;
+            }
+            today += "." + myYear;
+
+            tvAfter.setText(today);
         }
     };
 }

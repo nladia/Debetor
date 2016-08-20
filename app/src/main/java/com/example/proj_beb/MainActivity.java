@@ -11,14 +11,16 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity
@@ -153,53 +155,78 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private LinearLayout PlagFill(String name, String summ, String currancy, String owe, final int plagID)
+    private LinearLayout PlagFill(String name, String summ, String currancy, String owe, String dateOwe, String dateBack,  final int plagID)
     {
 
         LinearLayout llNew = new LinearLayout(this,null);
         llNew.setOrientation(LinearLayout.VERTICAL);
 
-
-
-        final Button btnNew = new Button(this);
         final TextView tvNew = new TextView(this);
         final TextView tvNew2 = new TextView(this);
+        final TextView tvNew3 = new TextView(this);
+        final SeekBar sbNew = new SeekBar(this);
 
 
+        Date today = new Date();
 
-        btnNew.setText("Full Info");
+        String[] sowe = dateOwe.replace("."," ").split(" ");
+        Date dowe = new Date(Integer.parseInt(sowe[2]) - 1900 , Integer.parseInt(sowe[1]) - 1, Integer.parseInt(sowe[0]));
+
+        String[] sback = dateBack.replace("."," ").split(" ");
+        Date dback = new Date(Integer.parseInt(sback[2]) - 1900, Integer.parseInt(sback[1]) - 1, Integer.parseInt(sback[0]));
+
+        if (today.getTime() < dback.getTime()) {
+            int s = (int) (dback.getTime() - dowe.getTime()) / (1000 * 60 * 60);
+
+            sbNew.setMax(s + 24);
+
+            int s2 = (int) (dback.getTime() - today.getTime()) / (1000 * 60 * 60);
+            s2 = s - s2;
+
+            sbNew.setProgress(s2);
+        } else {
+            sbNew.setMax(1);
+            sbNew.setProgress(1);
+        }
+
+
         tvNew.setText(name);
         tvNew.setTextSize(25);
+        tvNew3.setText(dateOwe + "                                              " + dateBack);
         tvNew2.setText(owe + " " + summ + " " + currancy);
         tvNew2.setTextSize(20);
         tvNew.setTextColor(Color.BLACK);
         tvNew2.setTextColor(Color.BLACK);
+        sbNew.setEnabled(false);
 
-        btnNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intentinfo = new Intent(MainActivity.this, Contact_Info.class);
-                intentinfo.putExtra("id", plagID);
-                startActivity(intentinfo);
-            }
-        });
 
         LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(wrapContent, wrapContent);
+        LinearLayout.LayoutParams sblParams = new LinearLayout.LayoutParams(matchParent, matchParent);
+
 
         lParams.gravity = Gravity.START;
         lParams.setMargins(15,5,5,20);
 
+        sblParams.gravity = Gravity.START;
+        sblParams.setMargins(15,5,5,20);
+
 
         llNew.addView(tvNew, lParams);
         llNew.addView(tvNew2, lParams);
-        llNew.addView(btnNew, lParams);
+        llNew.addView(tvNew3, sblParams);
+        llNew.addView(sbNew, sblParams);
         llNew.setBackgroundColor(Color.parseColor("#E8EAF6"));
 
+        llNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         return llNew;
-
     }
+
 
     private void PlagCreate()
     {
@@ -218,13 +245,14 @@ public class MainActivity extends AppCompatActivity
             int owe = c.getColumnIndex("owe");
             int value = c.getColumnIndex("value");
             int currancy = c.getColumnIndex("currancy");
+            int dateOwe = c.getColumnIndex("dateOwe");
+            int dateBack = c.getColumnIndex("dateBack");
             int plagID=0;
 
 
 
             LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(matchParent, wrapContent);
             lParams.setMargins(5,5,5,10);
-
             lParams.gravity = Gravity.START;
 
             do
@@ -254,10 +282,10 @@ public class MainActivity extends AppCompatActivity
                 switch (c.getString(owe))
                 {
                     case "Я должен":
-                        llMain.addView(PlagFill(c.getString(name), c.getString(value), c.getString(currancy), c.getString(owe), plagID++), lParams);
+                        llMain.addView(PlagFill(c.getString(name), c.getString(value), c.getString(currancy), c.getString(owe), c.getString(dateOwe), c.getString(dateBack), plagID++), lParams);
                         break;
                     case "Мне должны":
-                        llDeb.addView(PlagFill(c.getString(name), c.getString(value), c.getString(currancy), c.getString(owe), plagID++), lParams);
+                        llDeb.addView(PlagFill(c.getString(name), c.getString(value), c.getString(currancy), c.getString(owe), c.getString(dateOwe), c.getString(dateBack), plagID++), lParams);
                         break;
 
 

@@ -18,7 +18,6 @@ public class Rates_info extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.rates_info);
 
         btnBack = (Button)findViewById(R.id.btnBack);
