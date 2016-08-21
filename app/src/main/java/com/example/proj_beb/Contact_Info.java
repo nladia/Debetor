@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -37,6 +38,14 @@ public class Contact_Info extends AppCompatActivity
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(myToolbar);
+
+        myToolbar.setNavigationIcon(R.drawable.ic_back);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
 

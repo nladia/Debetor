@@ -13,11 +13,12 @@
     android:orientation="vertical">
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Large Text"
-    android:id="@+id/tvEUR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
+        android:text="Large Text"
+        android:id="@+id/tvEUR"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 
@@ -25,22 +26,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
         android:text="Large Text"
         android:id="@+id/tvUSD"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp" />
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Large Text"
-    android:id="@+id/tvRUB"
-    android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
+        android:text="Large Text"
+        android:id="@+id/tvRUB"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/back"
         android:background="@color/colorButton"

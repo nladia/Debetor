@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(myToolbar);
 
 
+
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
         tabHost.setup();
 
@@ -166,6 +167,14 @@ public class MainActivity extends AppCompatActivity
         final TextView tvNew3 = new TextView(this);
         final SeekBar sbNew = new SeekBar(this);
 
+        tvNew.setTextColor(Color.BLACK);
+        tvNew2.setTextColor(Color.BLACK);
+        tvNew.setText(name);
+        tvNew.setTextSize(25);
+        tvNew3.setText(dateOwe + "                                                        " + dateBack);
+        tvNew2.setText(owe + " " + summ + " " + currancy);
+        tvNew2.setTextSize(20);
+
 
         Date today = new Date();
 
@@ -173,12 +182,12 @@ public class MainActivity extends AppCompatActivity
         Date dowe = new Date(Integer.parseInt(sowe[2]) - 1900 , Integer.parseInt(sowe[1]) - 1, Integer.parseInt(sowe[0]));
 
         String[] sback = dateBack.replace("."," ").split(" ");
-        Date dback = new Date(Integer.parseInt(sback[2]) - 1900, Integer.parseInt(sback[1]) - 1, Integer.parseInt(sback[0]));
+        Date dback = new Date(Integer.parseInt(sback[2]) - 1900, Integer.parseInt(sback[1]) - 1, Integer.parseInt(sback[0]) + 1, 0,0,-1);
 
         if (today.getTime() < dback.getTime()) {
             int s = (int) (dback.getTime() - dowe.getTime()) / (1000 * 60 * 60);
 
-            sbNew.setMax(s + 24);
+            sbNew.setMax(s);
 
             int s2 = (int) (dback.getTime() - today.getTime()) / (1000 * 60 * 60);
             s2 = s - s2;
@@ -187,29 +196,19 @@ public class MainActivity extends AppCompatActivity
         } else {
             sbNew.setMax(1);
             sbNew.setProgress(1);
+            tvNew3.setTextColor(Color.RED);
         }
 
-
-        tvNew.setText(name);
-        tvNew.setTextSize(25);
-        tvNew3.setText(dateOwe + "                                              " + dateBack);
-        tvNew2.setText(owe + " " + summ + " " + currancy);
-        tvNew2.setTextSize(20);
-        tvNew.setTextColor(Color.BLACK);
-        tvNew2.setTextColor(Color.BLACK);
         sbNew.setEnabled(false);
-
 
         LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(wrapContent, wrapContent);
         LinearLayout.LayoutParams sblParams = new LinearLayout.LayoutParams(matchParent, matchParent);
-
 
         lParams.gravity = Gravity.START;
         lParams.setMargins(15,5,5,20);
 
         sblParams.gravity = Gravity.START;
         sblParams.setMargins(15,5,5,20);
-
 
         llNew.addView(tvNew, lParams);
         llNew.addView(tvNew2, lParams);
@@ -220,6 +219,10 @@ public class MainActivity extends AppCompatActivity
         llNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intentinfo = new Intent(MainActivity.this, Contact_Info.class);
+                intentinfo.putExtra("id", plagID);
+                startActivity(intentinfo);
 
             }
         });
@@ -259,7 +262,7 @@ public class MainActivity extends AppCompatActivity
             {
                 switch (c.getString(currancy))
                 {
-                    case "BYR":
+                    case "BYN":
                         if (c.getString(owe).equals("Мне должны"))
                             totalBYR += Float.parseFloat(c.getString(value));
                         if (c.getString(owe).equals("Я должен"))

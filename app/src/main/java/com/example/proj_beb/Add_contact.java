@@ -9,9 +9,8 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
+import android.graphics.Color;
 import android.provider.ContactsContract;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -36,10 +35,9 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
 
 
     private static final int DIALOG_DATE_AFTER = 12;
-    private static final int DIALOG_EXIT = 4;
 
     EditText etName, etMoney, etPrim;
-    TextView tvToday, tvAfter;
+    TextView tvToday, tvAfter, tvName, tvMoney;
     int myYear, myMonth, myDay;
     SQLdb sqldb;
     RadioGroup rgOwe, rgCurrancy;
@@ -58,6 +56,8 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
         tvToday = (TextView) findViewById(R.id.tvToday);
         tvAfter = (TextView) findViewById(R.id.tvAfter);
         etPrim = (EditText) findViewById(R.id.etPrim);
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvMoney = (TextView) findViewById(R.id.tvMoney);
         lv = (ListView) findViewById(R.id.list_view);
 
         Cursor contacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null,null, null);
@@ -96,6 +96,16 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
         Toolbar myToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(myToolbar);
 
+        myToolbar.setNavigationIcon(R.drawable.ic_back);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
         myToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item)
@@ -109,7 +119,14 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
                 }
                 else
                 {
-                    showDialog(DIALOG_EXIT);
+                    tvName.setTextColor(Color.BLACK);
+                    tvName.setTextColor(Color.BLACK);
+
+                    if (etName.getText().toString().length() == 0)
+                        tvName.setTextColor(Color.RED);
+
+                    if (etMoney.getText().toString().length() == 0)
+                        tvMoney.setTextColor(Color.RED);
                 }
 
                 return false;
@@ -278,17 +295,6 @@ public class Add_contact extends AppCompatActivity implements View.OnClickListen
             DatePickerDialog tpd = new DatePickerDialog(this, myCallBack, myYear, myMonth - 1, myDay);
 
             return tpd;
-        }
-        if (id == DIALOG_EXIT)
-        {
-            if (id == DIALOG_EXIT) {
-                AlertDialog.Builder adb = new AlertDialog.Builder(this);
-                adb.setTitle("Ошибка сохранения");
-                adb.setMessage("Введены не все данные");
-                adb.setIcon(android.R.drawable.ic_dialog_info);
-                adb.setPositiveButton("OK", null);
-                return adb.create();
-            }
         }
         return super.onCreateDialog(id);
     }

@@ -60,9 +60,9 @@ public class Rates {
 
         _url = "http://www.nbrb.by/API/ExRates/Rates/";
         Date date = new Date();
-        int year = 2016;
+        int year = date.getYear() + 1900;
         int month = date.getMonth() + 1;
-        int day = date.getDay();
+        int day = date.getDate();
         _url += url_Cur;
         _url += "?onDate=" + year + "-" + month + "-" + day + "&Periodicity=0";
 
